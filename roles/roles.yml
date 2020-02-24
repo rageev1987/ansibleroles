@@ -1,0 +1,15 @@
+
+---
+- name: common conf
+  hosts: db
+  become: yes
+  
+  roles:
+    - common
+
+- name: webserver conf
+  hosts: web
+  become: yes
+
+  roles:
+    - webserver

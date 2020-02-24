@@ -1,0 +1,24 @@
+
+---
+# tasks file for common
+- name: install packages
+  apt: name={{item}} state=installed
+  with_items:
+    - default-jdk
+    - maven
+    - git
+
+- name: git clone
+  git:
+    repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+    dest: /home/boxfuse-sample-java-war-hello
+    clone: yes
+
+- name: mvn package
+  shell: cd /home/boxfuse-sample-java-war-hello/ && mvn package
+
+- name: Fetch  hello-1.0.war
+  fetch:
+    src: /home/boxfuse-sample-java-war-hello/target/hello-1.0.war
+    dest: /home/dz1/roles/webserver/files/
+    

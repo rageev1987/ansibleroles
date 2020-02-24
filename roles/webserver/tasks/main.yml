@@ -1,0 +1,10 @@
+---
+# tasks file for webserver
+- name: Ensure tomcat8 package is present
+  apt:
+    name: tomcat8
+    state: present
+
+- name: copy hello-1.0.war
+  copy: src=/home/dz1/roles/webserver/files/84.201.165.255/home/boxfuse-sample-java-war-hello/target/hello-1.0.war dest={{ dest_folder}}/hello-1.0.war
+  
